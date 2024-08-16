@@ -135,38 +135,17 @@ const Home = () => {
 
       {/* ====================Model work in this section==================== */}
       <section
-        className="sec-1"
-        style={{ border: "3px solid red", backgroundAttachment: "" }}
-      >
-       
-        <div className="container" style={{ border: "" }} id="testing">
-          <div className="row align-items-center mt-5 mt-lg-0 pt-5 pt-lg-0">
-            
-            <div
-              className="col-12 col-lg-6 text-center text-lg-start"
-              style={{ border: "3px solid red" }}
-            >
-              <h1 className="display-5 text-white fw-bold">
-                Construisons ensemble votre{" "}
-                <span className="gradient-text-sec-1"> futur en ligne </span>
-              </h1>
-              <p className="text-white fs-5 fw-light">
-                Découvrez nous au travers du digital
-              </p>
-            </div>
-            
-
-            <div className=" col-12 col-lg-6  grid place-items-center  text-center text-lg-end" style={{border:'3px solid pink' , height:"70vh"}}>
-              {/* =================3d model will be place here================= */}
-
-<Basic3DScene />
-      
- 
-            </div>
-          </div>
-        </div>
-       
-      </section>
+        
+        >
+                {/* =================3d model will be place here================= */}
+  
+  <Basic3DScene />
+        
+   
+              
+  
+         
+        </section>
 
 
 

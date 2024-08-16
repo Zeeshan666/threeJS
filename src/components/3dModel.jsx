@@ -10,16 +10,16 @@ function Model({ onHover }) {
   const modelRef = useRef();
 
   useFrame((state) => {
-    modelRef.current.position.y = -2.7 + Math.sin(state.clock.elapsedTime) * 0.15;
+    modelRef.current.position.y = -3.5 + Math.sin(state.clock.elapsedTime) * 0.15;
   });
 
   return (
     <primitive
       ref={modelRef}
       object={scene}
-      scale={[3.4, 3.4, 3.4]}
-      position={[-0.4, -2.7, 0]}
-      rotation={[-0.2, -0.53, -0.19]} // Adjust the tilt for bottom-right corner up
+      scale={[5, 5, 5]}
+      position={[-2, -3.5, 0]}
+      rotation={[24.43, 37.32, 5.71]} // Adjust the tilt for bottom-right corner up
       onPointerOver={onHover}
     />
   );
@@ -28,7 +28,7 @@ function Model({ onHover }) {
 function IconsIn3D({ isHovered }) {
   const groupRef = useRef();
   const textureLoader = new THREE.TextureLoader();
-  const radius = 10; // Increased radius for more distance
+  const radius = 9.5; // Increased radius for more distance
   const angleIncrement = 360 / socialIcons.length;
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function IconsIn3D({ isHovered }) {
     if (isHovered) {
       // Staggered animation for a wave-like effect
       gsap.to(icons.map((icon, index) => icon.position), {
-        x: (index) => Math.cos((index * angleIncrement * Math.PI) / 180) * radius,
+        x: (index) => 0.3 +  Math.cos((index * angleIncrement * Math.PI) / 180) * radius,
         y: (index) => -5 + Math.sin((index * angleIncrement * Math.PI) / 180) * radius,
         duration: 1.5,
         ease: 'power2.out',
@@ -91,7 +91,7 @@ function IconsIn3D({ isHovered }) {
       gsap.to(icons.map(icon => icon.scale), {
         x: 1.5,
         y: 1.5,
-        duration: 1,
+        duration: 2,
         ease: 'power2.out',
       });
 
@@ -116,20 +116,47 @@ export default function Basic3DScene() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Canvas>
-      <OrbitControls
-        enableZoom={false}
-        minAzimuthAngle={-Math.PI / 8} // Limit rotation to a small range on the y-axis
-        maxAzimuthAngle={Math.PI / 8}
-        minPolarAngle={Math.PI / 3.5} // Limit tilt on the x-axis (downwards)
-        maxPolarAngle={Math.PI / 2.5} // Limit tilt on the x-axis (upwards)
-      />
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} intensity={1} />
-      <Suspense fallback={null}>
-        <Model onHover={() => setIsHovered(true)} />
-        <IconsIn3D isHovered={isHovered} />
-      </Suspense>
-    </Canvas>
+    <section
+      className="sec-1"
+      style={{ border: '3px solid red', backgroundAttachment: '' }}
+    >
+      <div className="container" style={{ border: '' }} id="testing">
+        <div className="row align-items-center ">
+          <div
+            className="col-12 col-lg-6 text-center text-lg-start"
+            style={{ border: '3px solid red' }}
+          >
+            <h1 className="display-5 text-white fw-bold">
+              Construisons ensemble votre{' '}
+              <span className="gradient-text-sec-1">futur en ligne</span>
+            </h1>
+            <p className="text-white fs-5 fw-light">
+              Découvrez nous au travers du digital
+            </p>
+          </div>
+
+          <div
+            className="col-12 col-lg-6 grid place-items-center text-center text-lg-end"
+            style={{ border: '3px solid pink', height: '110vh' }}
+          >
+            <Canvas>
+              <OrbitControls
+                enableZoom={false}
+                minAzimuthAngle={-Math.PI / 8} // Limit rotation to a small range on the y-axis
+                maxAzimuthAngle={Math.PI / 8}
+                minPolarAngle={Math.PI / 3.5} // Limit tilt on the x-axis (downwards)
+                maxPolarAngle={Math.PI / 2.5} // Limit tilt on the x-axis (upwards)
+              />
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[5, 5, 5]} intensity={10} />
+              <Suspense fallback={null}>
+                <Model onHover={() => setIsHovered(true)} />
+                <IconsIn3D isHovered={isHovered} />
+              </Suspense>
+            </Canvas>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
