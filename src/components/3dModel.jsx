@@ -5,27 +5,31 @@ import * as THREE from 'three';
 import gsap from 'gsap';
 import { socialIcons } from '../../src/components/icons/data';
 
-function Model({ rotation, onHover }) {
+function Model({ onHover , onMouseEnter, onMouseLeave }) {
   const { scene } = useGLTF('/images/Digitally Iphone Mock up 3D.gltf');
   const modelRef = useRef();
 
   useFrame((state) => {
-    modelRef.current.position.y = -3.5 + Math.sin(state.clock.elapsedTime) * 0.15;
+    modelRef.current.position.y = -3 + Math.sin(state.clock.elapsedTime) * 0.15;
   });
 
   return (
     <primitive
       ref={modelRef}
       object={scene}
-      scale={[4, 5, 5]}
-      position={[-2, -3.5, 0]}
-      rotation={[rotation.x, rotation.y, rotation.z]} // Controlled by state
-      onPointerOver={onHover}
+      scale={[4.5, 4.5, 4.5]}
+      position={[-1, -3, 0]}
+      rotation={[-0.30, -0.16, -0.16]} // Adjust the tilt for bottom-right corner up
+      onPointerOver={onMouseEnter}
+      onPointerOut={onMouseLeave}
+      // onPointerOut={}
     />
   );
 }
 
 function IconsIn3D({ isHovered }) {
+  console.log(isHovered);
+  
   const groupRef = useRef();
   const textureLoader = new THREE.TextureLoader();
   const radius = 9.5; // Increased radius for more distance
@@ -46,7 +50,7 @@ function IconsIn3D({ isHovered }) {
       icons.push(sprite);
     });
 
-    if (isHovered) {
+    if (isHovered == true) {
       // Staggered animation for a wave-like effect
       gsap.to(icons.map((icon, index) => icon.position), {
         x: (index) => 0.3 +  Math.cos((index * angleIncrement * Math.PI) / 180) * radius,
@@ -114,20 +118,30 @@ function IconsIn3D({ isHovered }) {
 
 export default function Basic3DScene() {
   const [isHovered, setIsHovered] = useState(false);
-  const [rotation, setRotation] = useState({ x: 24.43, y: 37.3, z: 5.71 });
+console.log(isHovered , 'hover');
 
-  const handleRotationChange = (axis, value) => {
-    setRotation((prevRotation) => ({ ...prevRotation, [axis]: parseFloat(value) }));
+
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
   };
 
+  const handleMouseLeave = () => {
+    console.log(setIsHovered);
+    
+    setIsHovered(false);
+  };
   return (
     <section
       className="sec-1"
-      style={{ backgroundAttachment: '' }}
+      style={{  backgroundAttachment: '' }}
     >
       <div className="container" style={{ border: '' }} id="testing">
-        <div className="row align-items-center">
-          <div className="col-12 col-lg-6 text-center text-lg-start">
+        <div className="row align-items-center ">
+          <div
+            className="col-12 col-lg-6 text-center text-lg-start"
+            // style={{ border: '3px solid red' }}
+          >
             <h1 className="display-5 text-white fw-bold">
               Construisons ensemble votre{' '}
               <span className="gradient-text-sec-1">futur en ligne</span>
@@ -139,7 +153,7 @@ export default function Basic3DScene() {
 
           <div
             className="col-12 col-lg-6 grid place-items-center text-center text-lg-end"
-            style={{ height: '110vh' }}
+            style={{  height: '110vh' }}
           >
             <Canvas>
               <OrbitControls
@@ -150,48 +164,12 @@ export default function Basic3DScene() {
                 maxPolarAngle={Math.PI / 2.5} // Limit tilt on the x-axis (upwards)
               />
               <ambientLight intensity={0.5} />
-              <directionalLight position={[5, 5, 5]} intensity={10} />
+              <directionalLight position={[5, 5, 5]} intensity={2} />
               <Suspense fallback={null}>
-                <Model rotation={rotation} onHover={() => setIsHovered(true)} />
+                <Model  onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
                 <IconsIn3D isHovered={isHovered} />
               </Suspense>
             </Canvas>
-
-            <div className="rotation-controls absolute top-32 left-32">
-              <label className='text-white'>
-                Rotation X:
-                <input
-                  type="range"
-                  min="-Math.PI"
-                  max="Math.PI"
-                  step="0.01"
-                  value={rotation.x}
-                  onChange={(e) => handleRotationChange('x', e.target.value)}
-                />
-              </label>
-              <label className='text-white'>
-                Rotation Y:
-                <input
-                  type="range"
-                  min="-Math.PI"
-                  max="Math.PI"
-                  step="0.01"
-                  value={rotation.y}
-                  onChange={(e) => handleRotationChange('y', e.target.value)}
-                />
-              </label>
-              <label className='text-white'>
-                Rotation Z:
-                <input
-                  type="range"
-                  min="-Math.PI"
-                  max="Math.PI"
-                  step="0.01"
-                  value={rotation.z}
-                  onChange={(e) => handleRotationChange('z', e.target.value)}
-                />
-              </label>
-            </div>
           </div>
         </div>
       </div>
