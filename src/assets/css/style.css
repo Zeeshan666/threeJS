@@ -187,11 +187,35 @@ body {
 
 /* slider end */
 
+.icons_styling {
+  position: absolute;
+  display: flex;
+  top: 50%;
+}
 
+.icons_styling img {
+  width: 60px;
+  height: 60px;
+}
+
+@media (max-width: 768px) {
+  .icons_styling img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .icons_styling img {
+    width: 35px;
+    height: 35px;
+  }
+}
 
 .sec-1 .row {
+  
   height: 80vh;
-  border: 3px solid palevioletred;
+  /* border: 3px solid palevioletred; */
   background-attachment: fixed;
 }
 
@@ -825,7 +849,13 @@ body {
 
 
 
-
+/* @media screen and (max-width:1024px) {
+ .sec-1 .row{
+  display: flex;
+  justify-content: ;
+  flex-direction: column;
+ } 
+} */
 
 
 @media screen and (max-width:768px) {

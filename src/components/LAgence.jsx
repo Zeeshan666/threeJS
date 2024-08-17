@@ -49,7 +49,7 @@ const LAgence = () => {
 
 
 
-                <section className="sec-1" style={{ border: '' }}>
+                <section className="" style={{ border: '' }}>
                     <div className="container">
                         <div className="row  lagence-row align-items-center mt-5 mt-lg-0 pt-5 pt-lg-0" >
                             <div className="col-12 col-md-5 text-center text-lg-start">
@@ -93,7 +93,7 @@ const LAgence = () => {
 
 
 
-                <section className="sec-1 m-auto" style={{ border: '' }}>
+                <section className=" m-auto" style={{ border: '' }}>
                     <div className="container">
                         <div className="row  lagence-row align-items-center mt-5 mt-lg-0 pt-5 pt-lg-0">
                             <div className="col-12 col-md-5 text-center text-lg-start">
@@ -127,7 +127,7 @@ const LAgence = () => {
 
             <section style={{ border: '' }} className="lagence-sec3">
 
-                <section className="sec-1 m-auto" style={{ border: '' }}>
+                <section className=" m-auto" style={{ border: '' }}>
                     <div className="container">
                         <div className="row  lagence-row align-items-center mt-5 mt-lg-0 pt-5 pt-lg-0">
                             <div className="col-12 col-md-5 text-center text-lg-start">
@@ -174,7 +174,7 @@ const LAgence = () => {
 
 
 
-                <section className="sec-1 m-auto" style={{ border: '' }}>
+                <section className=" m-auto" style={{ border: '' }}>
                     <div className="container">
                         <div className="row  lagence-row align-items-center mt-5 mt-lg-0 pt-5 pt-lg-0">
                             <div className="col-12 col-md-5 text-center text-lg-start">
