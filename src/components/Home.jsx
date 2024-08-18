@@ -152,49 +152,6 @@ const Home = () => {
 
       {/* </Parallax> */}
 
-      <section className="rectangular-oval-white-prop-2">
-        <img className="w-100" src="./images/Rectangle 9522.png" alt />
-      </section>
-
-      <section
-        className="sec-2"
-        id="agence"
-        style={{ border: "3px solid green" }}
-      >
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-lg-5 order-2 order-md-1 text-center">
-              <img
-                className="img-fluid overlap-img"
-                src="./images/man-effect2.png"
-                alt
-              />
-            </div>
-            <div className="col-12 col-lg-7 mb-5 mb-md-0 order-1 order-md-2">
-              <div className="mt-md-3 mt-lg-2 mt-xl-4 mt-xxl-5 pt-md-3 pt-lg-2 pt-xl-4 pt-xxl-5">
-                <h4 className="text-white fw-light mt-3 mt-md-0 ceo-sec-para">
-                  “Nous sommes passionnés par le succès de nos clients, et nous
-                  sommes fiers de leur fournir des résultats qui ont un impact
-                  positif sur leur entreprise. Que vous cherchiez à augmenter
-                  vos ventes, à attirer plus de trafic sur votre site web, ou à
-                  améliorer votre présence en ligne,{" "}
-                  <strong className="fw-semibold"> DIGITALY </strong>
-                  est là pour vous aider.”
-                </h4>
-                <h4 className="fw-semibold text-white text-end">
-                  FORHRANI Mehdi
-                </h4>
-                <h5
-                  className="text-end text-white fw-light"
-                  style={{ fontStyle: "italic" }}
-                >
-                  Directeur Général DIGITALY
-                </h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section
         className="sec-3-services"
